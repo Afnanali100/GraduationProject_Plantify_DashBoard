@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .admin-container {
+            width: 100%;
+            max-width: 700px;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .admin-container h2{
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 10px 30px;
+            background-color: #392ccd;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        .search {
+            width: 100%;
+            display: flex;
+            margin-bottom: 20px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        #search {
+            width: 70%; 
+            padding: 10px;
+            margin-right: 10px;
+        }
+
+        #searchButton {
+            width: 25%; 
+            padding: 10px;
+            background-color: #392ccd;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .admin-table th,
+        .admin-table td {
+            padding: 10px;
+            text-align: left;
+            border: none; 
+            
+        }
+       .ahead{
+            margin: 20px 0 20px 0;
+            border: 1px solid #bab6b6;
+        }
+        .admin-table th {
+            background-color: #ffffff;
+            
+        }
+
+        .admin-table input[type="text"] {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+        tr th.activ{
+            color:#392ccd;
+            text-align: center;
+            border-radius: 20px;
+        }
+        .bad{
+            font-size: 15px;
+        }
+        .admin-table button{
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        .admin-table button i {
+            font-size: 20px; 
+            color: #392ccd;
+            text-align: center;    
+        }
+    </style>
+</head>
+<body>
+    <div id="admin" class="admin-container">
+        <h2>Admin List</h2>
+        <div class="search">
+          <input type="text" id="search" placeholder="Search...">
+          <button id="searchButton">Search</button>
+        </div>
+        <table id="admin-table" class="admin-table " >
+          <thead class="ahead">
+            <tr>
+              <th rowspan="1" colspan="1" tabindex="0" aria-controls="Datatables_table_0">Id</th>
+              <th>User</th>
+              <th>Username</th>
+              <th>Email Address</th>
+              <th>Role</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="admin-table-body" class="bad">
+            <!-- Data will be inserted here -->
+            <tr>
+                <th rowspan="1" colspan="1" tabindex="0" aria-controls="Datatables_table_0" style="color: #5f5f62;">1</th>
+                <th style="color: #5f5f62;">Hayden</th>
+                <th style="color: #5f5f62;">Hayden</th>
+                <th style="color: #5f5f62;">work409@gmail.com</th>
+                <th style="color: #5f5f62;">Admin</th>
+                <th class="activ" >Active</th>
+                <th><button><i class="fas fa-edit"></i> </button>
+                    <button><i class="fas fa-trash-alt"></i></button></th>
+              </tr>
+              <tr>
+                <th rowspan="1" colspan="1" tabindex="0" aria-controls="Datatables_table_0" style="color: #5f5f62;">2</th>
+                <th style="color: #5f5f62;">asmaa</th>
+                <th style="color: #5f5f62;">asmaa</th>
+                <th style="color: #5f5f62;">asmaa4333@gmail.com</th>
+                <th style="color: #5f5f62;">Admin</th>
+                <th class="activ" >Active</th>
+                <th><button><i class="fas fa-edit"></i> </button>
+                    <button><i class="fas fa-trash-alt"></i></button></th>
+              </tr>
+              <tr>
+                <th rowspan="1" colspan="1" tabindex="0" aria-controls="Datatables_table_0" style="color: #5f5f62;">3</th>
+                <th style="color: #5f5f62;">afnan</th>
+                <th style="color: #5f5f62;">afnan</th>
+                <th style="color: #5f5f62;">afnan212@gmail.com</th>
+                <th style="color: #5f5f62;">Admin</th>
+                <th class="activ" >Active</th>
+                <th><button><i class="fas fa-edit"></i> </button>
+                    <button><i class="fas fa-trash-alt"></i></button></th>
+              </tr>
+              <tr>
+                <th rowspan="1" colspan="1" tabindex="0" aria-controls="Datatables_table_0" style="color: #5f5f62;">4</th>
+                <th style="color: #5f5f62;">arwa</th>
+                <th style="color: #5f5f62;">arwa</th>
+                <th style="color: #5f5f62;">arwa435@gmail.com</th>
+                <th style="color: #5f5f62;">Admin</th>
+                <th class="activ" >Active</th>
+                <th><button><i class="fas fa-edit"></i> </button>
+                    <button><i class="fas fa-trash-alt"></i></button></th>
+              </tr>
+          </tbody>
+        </table>
+    </div>
+</body>
+</html>
