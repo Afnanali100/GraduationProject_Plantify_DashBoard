@@ -1,0 +1,129 @@
+﻿@model IEnumerable<UserViewModel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div id="admin" class="admin-container" style="">
+    <h2 style="background-color:deeppink">Users List</h2>
+    <form class="row col-8 offset-1">
+        <div class="col-8 ">
+            <input type="text" class="form-control" name="username" placeholder="Enter The user Name" />
+        </div>
+        <div class="col-4 ">
+            <input type="submit" value="Search" class="btn btn-success" />
+        </div>
+    </form>
+    <br />
+    <br />
+  @if(Model.Count()>0)
+    {
+
+
+        <table id="admin-table" class="admin-table ">
+
+
+            <thead class="ahead">
+                <tr>
+                   
+                    <th >@Html.DisplayNameFor(u=>u.Id)</th>
+                    <th>@Html.DisplayNameFor(u=>u.UserName)</th>
+                    <th>@Html.DisplayNameFor(u=>u.Email)</th>
+                    <th>@Html.DisplayNameFor(u=>u.Roles)</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="admin-table-body" class="bad">
+                <!-- Data will be inserted here -->
+                @foreach (var user in Model)
+                {
+                    <tr>
+                        <th style="color: #5f5f62;">@user.Id</th>
+                        <th style="color: #5f5f62;">@user.UserName</th>
+                        <th style="color: #5f5f62;">@user.Email</th>
+                        <th style="color: #5f5f62;">@string.Join(",",user.Roles)</th>
+                        <th>
+                            <partial name="_ButtonPartialView" model="@user.Id"/>
+                        </th>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+
+
+    }
+
+    else
+    {
+        <h2 class="mt-5 alert alert-warning">There is Not Any User</h2>
+    
+    }
+
+</div>
+
+@section Scripts{
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="~/css2/stylesheet_userindex.css" rel="stylesheet" />
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+    <script>
+     const searchBar = $('#searchButton');
+    const tableBody = $('#admin-table-body');
+
+    searchBar.on("keypress", function (event) {
+        // Check if the pressed key is Enter (key code 13)
+        if (event.which === 13) {
+            event.preventDefault(); // Prevent the form submission
+            var searchValue = searchBar.val().toLowerCase();
+
+            $.ajax({
+                url: '/User/Index',
+                type: 'Get',
+                data: { username: searchValue },
+                success: function (result) {
+                    updateTable(result);
+                },
+                error: function (xhr, status, error) {
+                    console.log(error);
+                }
+            });
+        }
+    });
+
+         function updateTable(data) {
+            // Clear existing table rows
+            tableBody.empty();
+
+            // Check if there are any results
+            if (data.length > 0) {
+                $.each(data, function (index, user) {
+                    var roles = user.Roles ? user.Roles.join(",") : '';
+
+                    // Append new rows to the table
+                    tableBody.append(`
+                                        <tr>
+                                            <td style="color: #5f5f62;">${user.Id}</td>
+                                            <td style="color: #5f5f62;">${user.UserName}</td>
+                                            <td style="color: #5f5f62;">${user.Email}</td>
+                                            <td style="color: #5f5f62;">${roles}</td>
+                                            <td>
+                                                <partial name="_ButtonPartialView" model="${user.Id}" />
+                                            </td>
+                                        </tr>
+                                    `);
+                });
+            } else {
+                // Display a message if no results are found
+                tableBody.append(`
+                                    <tr>
+                                        <td colspan="5" class="text-center">No matching users found.</td>
+                                    </tr>
+                                `);
+            }
+        }
+    </script>
+    
+}

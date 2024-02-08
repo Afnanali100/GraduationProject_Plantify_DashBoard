@@ -1,0 +1,17 @@
+﻿@model string
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<a  asp-action="Update" asp-route-id="@Model"  ><i class="fas fa-edit"></i> </a>
+
+
+
+<a asp-action="Delete" asp-route-id="@Model"><i class="fas fa-trash-alt"></i></a>
+
+@section Scripts{
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="~/css2/stylesheet_userindex.css" rel="stylesheet" />
+}

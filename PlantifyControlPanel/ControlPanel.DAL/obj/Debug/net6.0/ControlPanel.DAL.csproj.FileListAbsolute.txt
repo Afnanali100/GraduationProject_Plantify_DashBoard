@@ -1,0 +1,12 @@
+D:\Graduation Project\Project implementation\PlantifyControlPanel\ControlPanel.DAL\bin\Debug\net6.0\ControlPanel.DAL.deps.json
+D:\Graduation Project\Project implementation\PlantifyControlPanel\ControlPanel.DAL\bin\Debug\net6.0\ControlPanel.DAL.dll
+D:\Graduation Project\Project implementation\PlantifyControlPanel\ControlPanel.DAL\bin\Debug\net6.0\ControlPanel.DAL.pdb
+D:\Graduation Project\Project implementation\PlantifyControlPanel\ControlPanel.DAL\obj\Debug\net6.0\ControlPanel.DAL.csproj.AssemblyReference.cache
+D:\Graduation Project\Project implementation\PlantifyControlPanel\ControlPanel.DAL\obj\Debug\net6.0\ControlPanel.DAL.GeneratedMSBuildEditorConfig.editorconfig
+D:\Graduation Project\Project implementation\PlantifyControlPanel\ControlPanel.DAL\obj\Debug\net6.0\ControlPanel.DAL.AssemblyInfoInputs.cache
+D:\Graduation Project\Project implementation\PlantifyControlPanel\ControlPanel.DAL\obj\Debug\net6.0\ControlPanel.DAL.AssemblyInfo.cs
+D:\Graduation Project\Project implementation\PlantifyControlPanel\ControlPanel.DAL\obj\Debug\net6.0\ControlPanel.DAL.csproj.CoreCompileInputs.cache
+D:\Graduation Project\Project implementation\PlantifyControlPanel\ControlPanel.DAL\obj\Debug\net6.0\ControlPanel.DAL.dll
+D:\Graduation Project\Project implementation\PlantifyControlPanel\ControlPanel.DAL\obj\Debug\net6.0\refint\ControlPanel.DAL.dll
+D:\Graduation Project\Project implementation\PlantifyControlPanel\ControlPanel.DAL\obj\Debug\net6.0\ControlPanel.DAL.pdb
+D:\Graduation Project\Project implementation\PlantifyControlPanel\ControlPanel.DAL\obj\Debug\net6.0\ref\ControlPanel.DAL.dll

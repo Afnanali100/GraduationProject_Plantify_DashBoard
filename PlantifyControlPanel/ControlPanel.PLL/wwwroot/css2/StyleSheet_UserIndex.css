@@ -1,0 +1,92 @@
+﻿
+.admin-container {
+    width: 100%;
+    background-color: #fff;
+    margin-top:20px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+    .admin-container h2 {
+        text-align: center;
+        margin-bottom: 30px;
+        padding: 10px 30px;
+        background-color: #392ccd;
+        color: #fff;
+        border-radius: 5px;
+    }
+
+.search {
+    width: 100%;
+    display: flex;
+    margin-bottom: 20px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#searchBar {
+    width: 100%;
+    padding: 10px;
+    margin-right: 10px;
+}
+
+#searchButton {
+    width: 25%;
+    padding: 10px;
+    background-color: #392ccd;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+    .admin-table th,
+    .admin-table td {
+        padding: 10px;
+        text-align: left;
+        border: none;
+    }
+
+.ahead {
+    margin: 20px 0 20px 0;
+    border: 1px solid #bab6b6;
+}
+
+.admin-table th {
+    background-color: #ffffff;
+}
+
+.admin-table input[type="text"] {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+tr th.activ {
+    color: #392ccd;
+    text-align: center;
+    border-radius: 20px;
+}
+
+.bad {
+    font-size: 15px;
+}
+
+.admin-table button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+    .admin-table button i {
+        font-size: 20px;
+        color: #392ccd;
+        text-align: center;
+    }

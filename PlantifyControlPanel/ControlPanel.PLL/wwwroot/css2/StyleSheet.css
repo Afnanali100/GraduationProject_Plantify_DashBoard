@@ -1,0 +1,26 @@
+﻿
+
+
+    .container input[type="email"] {
+        width: 100%;
+        padding: 13px 3px;
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    .container button {
+        width: 100%;
+        padding: 14px;
+        background-color: #392ccd;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .container button:hover {
+            background-color: #3126aa;
+     }
+
+

@@ -1,0 +1,45 @@
+﻿@model UserViewModel
+
+
+
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
+}
+
+<h1>Update User </h1>
+<form class="pt-3" method="post" asp-controller="User" asp-action="Update">
+    <div style="font-size:large; color:red" asp-validation-summary="All"></div>
+
+   
+    <div class="form-group">
+        <Lable>UserName</Lable>
+        <input asp-for="@Model.UserName" class="form-control form-control-lg" id="exampleInputEmail1" >
+        <span asp-validation-for="@Model.UserName"></span>
+
+    </div>
+
+
+    <div class="form-group">
+        <Lable>Email</Lable>
+        <input asp-for="@Model.Email" class="form-control form-control-lg" id="exampleInputPassword1" >
+        <span asp-validation-for="@Model.Email"></span>
+    </div>
+
+    <div class="form-group">
+        <label>Role</label>
+        <select asp-for="@Model.Roles" asp-items="@(new SelectList(Model.AllRoles))" class="form-control">
+            <option value="@null">----Select Role----</option>
+        </select>
+        <span asp-validation-for="@Model.Roles"></span>
+    </div>
+
+    <div class="mt-3">
+        <input type="submit" value="Update" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">
+    </div>
+</form>
+@section ValidationScriptSection{
+    <partial name="_ValidationScriptsPartial" />
+}
+
+
