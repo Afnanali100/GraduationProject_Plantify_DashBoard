@@ -57,7 +57,7 @@ namespace ControlPanel.PLL.Controllers
 
                         if (result.Succeeded)
                         {
-                            HttpContext.Session.SetString("UserName", user.UserName);
+                            var claims = new Claim(ClaimTypes.Name,user.UserName);
                             return RedirectToAction("Index", "User");
                         }
                     }
@@ -179,43 +179,44 @@ namespace ControlPanel.PLL.Controllers
             return View(model);
 
         }
-        [HttpGet]
-       public async Task GoogleLogin()
-		{
-            await HttpContext.ChallengeAsync(GoogleDefaults.AuthenticationScheme, new AuthenticationProperties
-            {
-                RedirectUri = Url.Action(nameof(GoogleResponse))
-            });
-		}
+       // [HttpGet]
+  //     public async Task GoogleLogin()
+		//{
+  //          await HttpContext.ChallengeAsync(GoogleDefaults.AuthenticationScheme, new AuthenticationProperties
+  //          {
+  //              RedirectUri = Url.Action(nameof(GoogleResponse))
+  //          });
+		//}
 
 
 
 
-        public async Task<IActionResult> GoogleResponse()
-        {
-            var result = await HttpContext.AuthenticateAsync(GoogleDefaults.AuthenticationScheme);
+  //      public async Task<IActionResult> GoogleResponse()
+  //      {
+  //          var result = await HttpContext.AuthenticateAsync(GoogleDefaults.AuthenticationScheme);
 
-            // Ensure the authentication was successful
-            if (result.Succeeded)
-            {
-                var emailClaim = result.Principal.FindFirst(ClaimTypes.Email);
+  //          if (result.Succeeded)
+  //          {
+  //              var emailClaim = result.Principal.FindFirst(ClaimTypes.Email);
 
-                // Check if the user has a valid email claim
-                if (emailClaim != null)
-                {
-                    // Get the email value
-                    var email = emailClaim.Value;
+  //              if (emailClaim != null)
+  //              {
+  //                  var email = emailClaim.Value;
+  //                  var userName = email.Split('@')[0];
 
-                    // Extract the username from the email (example: assuming email is in the form "username@example.com")
-                    var userName = email.Split('@')[0];
+  //                  // Store the username as a claim
+  //                  var claims = new List<Claim>
+  //          {
+  //              new Claim(ClaimTypes.Name, userName)
+  //          };
 
-                    // Store the username in the session
-                    HttpContext.Session.SetString("UserName", userName);
-                }
-            }
+  //                  var claimsIdentity = new ClaimsIdentity(claims, "login");
+  //                  await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
+  //              }
+  //          }
 
-            return RedirectToAction("Index", "Home");
-        }
+  //          return RedirectToAction("Index", "User");
+  //      }
 
 
     }

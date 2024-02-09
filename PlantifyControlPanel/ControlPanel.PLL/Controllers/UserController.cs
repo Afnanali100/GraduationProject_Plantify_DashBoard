@@ -10,12 +10,13 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.DotNet.Scaffolding.Shared.Messaging;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 using System.Security.Cryptography.X509Certificates;
 
 namespace ControlPanel.PLL.Controllers
 {
-    [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
-    [Authorize(AuthenticationSchemes = GoogleDefaults.AuthenticationScheme)]
+    [Authorize]
+  
     public class UserController : Controller
     {
         private readonly UserManager<ApplicationUser> userManager;
@@ -34,9 +35,9 @@ namespace ControlPanel.PLL.Controllers
         public async Task<IActionResult> Index(string username)
        {
 
-            var userName = HttpContext.Session.GetString("UserName");
-            ViewData["UserName"] = userName;
-            
+
+
+            var userName = User.Identity.Name;
             if (string.IsNullOrEmpty(username))
             {
                 var mappedUsers =  userManager.Users.Select( u => new UserViewModel()

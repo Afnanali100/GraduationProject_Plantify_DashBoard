@@ -44,23 +44,13 @@ namespace ControlPanel.PLL
                 options.Password.RequireUppercase = true;
             }).AddEntityFrameworkStores<dbContext>().AddDefaultTokenProviders();
 
-            builder.Services.AddAuthentication(options =>
-            {
-                options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
-
-            })
+            builder.Services.AddAuthentication( CookieAuthenticationDefaults.AuthenticationScheme)
             .AddCookie(options =>
             {
                 options.LoginPath = "/Account/Login";
-            })
-            .AddGoogle(GoogleDefaults.AuthenticationScheme, o =>
-            {
-                IConfiguration GoogleAuthSection = builder.Configuration.GetSection("Authentcation:Google");
-                o.ClientId = GoogleAuthSection["ClientId"];
-                o.ClientSecret = GoogleAuthSection["ClientSecret"];
+                options.AccessDeniedPath = "/Home/error";
             });
-
+           
             // MailKit
             builder.Services.Configure<MailSetting>(builder.Configuration.GetSection("MailSetting"));
             builder.Services.AddScoped<IEmailSetting, EmailSetting>();

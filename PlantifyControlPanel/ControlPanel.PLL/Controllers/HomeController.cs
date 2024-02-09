@@ -8,8 +8,7 @@ using System.Text;
 
 namespace ControlPanel.PLL.Controllers
 {
-    [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
-    [Authorize(AuthenticationSchemes = GoogleDefaults.AuthenticationScheme)]
+
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -21,8 +20,7 @@ namespace ControlPanel.PLL.Controllers
        
         public IActionResult Index()
         {
-            var userName = HttpContext.Session.GetString("UserName");
-            ViewData["UserName"] = userName;
+       
             return View();
         }
 
