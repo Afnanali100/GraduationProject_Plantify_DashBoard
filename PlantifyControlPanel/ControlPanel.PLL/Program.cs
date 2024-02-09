@@ -55,15 +55,10 @@ namespace ControlPanel.PLL
             builder.Services.Configure<MailSetting>(builder.Configuration.GetSection("MailSetting"));
             builder.Services.AddScoped<IEmailSetting, EmailSetting>();
 
-            // Session
-            builder.Services.AddSession(options =>
-            {
-                options.IdleTimeout = TimeSpan.FromMinutes(30);
-                options.Cookie.HttpOnly = true;
-                options.Cookie.IsEssential = true;
-            });
+         
 
             var app = builder.Build();
+
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
@@ -75,7 +70,15 @@ namespace ControlPanel.PLL
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();
-            app.UseSession();  
+            //Migration  
+
+            using (var scope = app.Services.CreateScope())
+            {
+                var db = scope.ServiceProvider.GetRequiredService<dbContext>();
+                db.Database.Migrate();
+            } 
+            
+
             app.UseAuthentication();
             app.UseAuthorization();
 
