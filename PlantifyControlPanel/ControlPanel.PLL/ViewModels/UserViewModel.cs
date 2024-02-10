@@ -15,7 +15,7 @@ namespace ControlPanel.PLL.ViewModels
 
         public IEnumerable<string> Roles { get; set; }
 
-      public List<string>AllRoles { get; set; }=new List<string>();
+      public  List<string>AllRoles { get; set; }=new List<string>();
 
 
 

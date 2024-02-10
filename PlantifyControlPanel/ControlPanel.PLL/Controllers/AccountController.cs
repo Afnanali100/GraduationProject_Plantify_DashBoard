@@ -11,6 +11,7 @@ using System.Security.Claims;
 using System;
 using System.Security.Policy;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Principal;
 
 namespace ControlPanel.PLL.Controllers
 {
@@ -92,18 +93,17 @@ namespace ControlPanel.PLL.Controllers
 
                     if (result.Succeeded)
                     {
-                        if (!roleManager.Roles.Any(r => r.Name == "User"))
+                        var role = new IdentityRole()
                         {
-                            var id = Guid.NewGuid().ToString();
-                            var role = new IdentityRole()
-                            {
-                                Id=id,
-                                Name="User"
-                            };
+                            Id=Guid.NewGuid().ToString(),
+                            Name = "User"
+                        };
+                        if (!roleManager.Roles.Any(r => r.Name == role.Name))
+                        {
                            await roleManager.CreateAsync(role);
                         }
 
-                       await userManager.AddToRoleAsync(user, "User");
+                       await userManager.AddToRoleAsync(user,role.Name );
                         return RedirectToAction(nameof(Login));
                     }
                     foreach (var error in result.Errors)

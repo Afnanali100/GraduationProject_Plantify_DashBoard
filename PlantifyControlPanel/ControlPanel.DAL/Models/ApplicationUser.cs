@@ -14,7 +14,7 @@ namespace ControlPanel.DAL.Models
         public bool IsAgree { get; set; }
 
 
-     
+       
         
 
     }

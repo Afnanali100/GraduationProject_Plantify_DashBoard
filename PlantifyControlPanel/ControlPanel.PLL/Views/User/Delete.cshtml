@@ -29,9 +29,7 @@
 
     <div class="form-group">
         <label>Role</label>
-        <select asp-for="@Model.Roles" asp-items="@(new SelectList(Model.Roles))" class="form-control" readonly>
-        </select>
-        
+        <input asp-for="@Model.Roles"  class="form-control" readonly>
     </div>
 
     <div class="mt-3">

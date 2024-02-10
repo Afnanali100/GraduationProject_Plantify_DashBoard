@@ -101,16 +101,32 @@
                         <p class="sidebar-menu-title">Dash menu</p>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-controller="User" asp-action="Index">
+                        <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="true" aria-controls="auth">
                             <i class="typcn typcn-device-desktop menu-icon"></i>
-                            <span class="menu-title"> Dashboard </span>
+                            <span class="menu-title">Users</span>
+                            <i class="menu-arrow"></i>
                         </a>
-                    </li>
+                        <div class="collapse show" id="auth" style="">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="User" asp-action="Index">
 
+                                        <span class="menu-title"> User List </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="User" asp-action="Create">
+
+                                        <span class="menu-title"> Create User </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="true" aria-controls="auth">
                             <i class="typcn typcn-document-text menu-icon"></i>
-                            <span class="menu-title">Role Setting</span>
+                            <span class="menu-title">Roles & Permissions</span>
                             <i class="menu-arrow"></i>
                         </a>
                         <div class="collapse show" id="auth" style="">

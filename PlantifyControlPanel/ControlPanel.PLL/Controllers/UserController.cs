@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.DotNet.Scaffolding.Shared.Messaging;
 using Microsoft.EntityFrameworkCore;
+using NuGet.Protocol.Plugins;
 using System.Security.Claims;
 using System.Security.Cryptography.X509Certificates;
 
@@ -74,6 +75,65 @@ namespace ControlPanel.PLL.Controllers
             
 
         }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+
+
+         
+
+
+            return View();
+        }
+
+        [HttpPost]
+
+        public async Task<IActionResult> Create(UserViewModel userVM)
+        {
+           
+            if (ModelState.IsValid)
+            {
+                var check = await userManager.FindByEmailAsync(userVM.Email);
+                if (check is null)
+                {
+                    
+                    var mappeduser =mapper.Map<UserViewModel,ApplicationUser>(userVM);
+
+                    if (userVM.Roles != null && userVM.Roles.Any())
+                    {
+                        foreach (var roleName in userVM.Roles)
+                        {
+                            if (roleManager.Roles.Any(r => r.Name == roleName))
+                            {
+                                var role = roleManager.Roles.FirstOrDefault(r => r.Name == roleName);
+                                await userManager.AddToRoleAsync(mappeduser, role.Name);
+                            }
+                        }
+                    }
+
+
+                    var result = await userManager.CreateAsync(mappeduser,"P@asswo0rd");
+
+                    if (result.Succeeded)
+                    {
+
+                        return RedirectToAction(nameof(Index));
+                    }
+
+                    foreach (var error in result.Errors)
+                        ModelState.AddModelError(string.Empty, error.Description);
+                }
+                ModelState.AddModelError(String.Empty, "The Email is already taken");
+            }
+
+            userVM.AllRoles = await roleManager.Roles.Select(r => r.Name).ToListAsync();
+
+
+            return View(userVM);
+        }
+
+
 
         [HttpGet]
         public async  Task<IActionResult> Update(string id,string name="Update")
