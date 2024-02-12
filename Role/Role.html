@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .admin-container {
+            width: 100%;
+            max-width: 700px;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .admin-container h2{
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 10px 30px;
+            background-color: #392ccd;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        .search {
+            width: 100%;
+            display: flex;
+            margin-bottom: 20px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        #search {
+            width: 70%; 
+            padding: 10px;
+            margin-right: 10px;
+        }
+
+        #searchButton {
+            width: 25%; 
+            padding: 10px;
+            background-color: #392ccd;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .admin-table th,
+        .admin-table td {
+            padding: 10px;
+            text-align: left;
+            border: none; 
+            
+        }
+       .ahead{
+            margin: 20px;
+            border: 1px solid #bab6b6;
+        }
+        .admin-table th {
+            background-color: #ffffff;
+            
+        }
+
+        .admin-table input[type="text"] {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+        .admin-table button{
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        .admin-table button i {
+            font-size: 20px; 
+            color: #392ccd;
+            text-align: center;    
+        }
+        input[type=checkbox]{
+            position: absolute;
+            height: 0;
+            width: 0;
+            visibility: hidden;
+            opacity: 0;
+            overflow: hidden;
+          }
+          
+          label {
+            cursor: pointer;
+            text-indent: -9999px;
+            width: 40px;
+            height: 20px;
+            background: #f2125e;
+            display: block;
+            border-radius: 100px;
+            position: relative;
+          }
+          
+          label:after {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 5px;
+            width: 15px;
+            height: 15px;
+            background: #fff;
+            border-radius: 90px;
+            transition: 0.3s;
+          }
+          
+          input:checked + label {
+            background: #392ccd;
+          }
+          
+          input:checked + label:after {
+            left: calc(100% - 5px);
+            transform: translateX(-100%);
+          }
+          
+          label:active:after {
+            width: 130px;
+          }
+          .bad{
+            font-size: 15px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="admin" class="admin-container">
+        <h2>Role & Permissions</h2>
+        <div class="search">
+          <input type="text" id="search" placeholder="Search...">
+          <button id="searchButton">Search</button>
+        </div>
+        <table id="admin-table" class="admin-table " >
+          <thead class="ahead">
+            <tr>
+              <th rowspan="1" colspan="1" tabindex="0" aria-controls="Datatables_table_0">Id</th>
+              <th>Admin Role</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="admin-table-body" class="bad">
+            <tr>
+                <th rowspan="1" colspan="1" tabindex="0" aria-controls="Datatables_table_0" style="color: #5f5f62; ">1</th>
+                <th  style="color: #5f5f62;">Super Admin</th>
+                <th><input type="checkbox" id="switch" /><label for="switch">Toggle</label></th>
+                <th><button><i class="fas fa-edit"></i> </button>
+                    <button><i class="fas fa-trash-alt"></i></button></th>
+              </tr>
+              <tr>
+                <th rowspan="1" colspan="1" tabindex="0" aria-controls="Datatables_table_0" style="color: #5f5f62;">2</th>
+                <th  style="color: #5f5f62;"> Admin</th>
+                <th><input type="checkbox" id="switch" /><label for="switch">Toggle</label></th>
+                <th><button><i class="fas fa-edit"></i> </button>
+                    <button><i class="fas fa-trash-alt"></i></button></th>
+              </tr>
+              <tr>
+                <th rowspan="1" colspan="1" tabindex="0" aria-controls="Datatables_table_0" style="color: #5f5f62;">3</th>
+                <th  style="color: #5f5f62;">Accountant</th>
+                <th><input type="checkbox" id="switch" /><label for="switch">Toggle</label></th>
+                <th><button><i class="fas fa-edit"></i> </button>
+                    <button><i class="fas fa-trash-alt"></i></button></th>
+              </tr>
+              <tr>
+                <th rowspan="1" colspan="1" tabindex="0" aria-controls="Datatables_table_0" style="color: #5f5f62;">4</th>
+                <th  style="color: #5f5f62;">Operator</th>
+                <th><input type="checkbox" id="switch" /><label for="switch">Toggle</label></th>
+                <th><button><i class="fas fa-edit"></i> </button>
+                    <button><i class="fas fa-trash-alt"></i></button></th>
+              </tr>
+            <!-- Data will be inserted here -->
+          </tbody>
+        </table>
+        
+    </div>
+</body>
+</html>
